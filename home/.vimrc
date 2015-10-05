@@ -464,4 +464,44 @@ set number
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.tar.gz
 set wildignore+=*/node_modules/*
 
+" Configuración adicional by @emanrique
 
+set nu
+set norelativenumber
+set nocursorline
+
+
+"cursor
+if &term =~ "xterm\\|rxvt"
+    " use an orange cursor in insert mode
+    let &t_SI = "\<Esc>]12;orange\x7"
+    " use a red cursor otherwise
+    let &t_EI = "\<Esc>]12;gray\x7"
+    "silent !echo -ne "\033]12;gray\007"
+    " reset cursor when vim exits
+    autocmd VimLeave * silent !echo -ne "\033]112\007"
+    " use \003]12;gray\007 for gnome-terminal
+endif
+
+"Ignore for folders zend
+set wildignore+=*/tmp/*
+set wildignore+=*/vendor/*
+
+"Move lines up/bottom
+nnoremap <C-S-j> :m+<CR>==
+nnoremap <C-S-k> :m-2<CR>==
+inoremap <C-S-j> <Esc>:m+<CR>==gi
+inoremap <C-S-k> <Esc>:m-2<CR>==gi
+vnoremap <C-S-j> :m'>+<CR>gv=gv
+vnoremap <C-S-k> :m-2<CR>gv=gv
+
+let g:indent_guides_enable_on_vim_startup = 0
+
+" Configuración espacios y tabs por tipo de archivo
+autocmd FileType jade set tabstop=4|set shiftwidth=4|set expandtab
+autocmd FileType stylus set tabstop=4|set noexpandtab
+autocmd FileType coffee set tabstop=4|set noexpandtab
+
+set runtimepath^=~/.vim/bundle/vim-ctrlp.vim
+colorscheme molokai
+set nowrap
