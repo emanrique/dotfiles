@@ -1,5 +1,4 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Maintainer: 
+" intainer: 
 "       Amir Salihefendic
 "       http://amix.dk - amix@amix.dk
 "
@@ -55,8 +54,11 @@ set autoread
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
-let mapleader = ","
-let g:mapleader = ","
+" let mapleader = ","
+" let g:mapleader = ","
+
+let mapleader = "\<Space>"
+let g:mapleader = "\<Space>"
 
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -146,12 +148,7 @@ set foldcolumn=1
 " Enable syntax highlighting
 syntax enable 
 
-try
-    colorscheme desert
-catch
-endtry
 
-set background=dark
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -216,8 +213,8 @@ map j gj
 map k gk
 
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-map <space> /
-map <c-space> ?
+" map <space> /
+" map <c-space> ?
 
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
@@ -451,25 +448,23 @@ endfunction
 " Habilitando el clipboard desde vim hacia el clipboard global
 set clipboard=unnamedplus
 
-" Estableciendo el textwidth a 110 caracteres
-set textwidth=110
 
 " pathogen 
 execute pathogen#infect()
 
-" setting number
-set number
 
-" ignoring file types for ctrlp plugin
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.tar.gz
-set wildignore+=*/node_modules/*
 
-" Configuración adicional by @emanrique
+" Configuración para Nerdtree
+nmap <silent> <F3> :NERDTreeToggle<CR>
+let NERDTreeMapOpenInTab='<ENTER>'
+let NERDTreeQuitOnOpen=0
+let NERDTreeIgnore=['node_modules$[[dir]]']
+
+
 
 set nu
 set norelativenumber
 set nocursorline
-
 
 "cursor
 if &term =~ "xterm\\|rxvt"
@@ -483,11 +478,31 @@ if &term =~ "xterm\\|rxvt"
     " use \003]12;gray\007 for gnome-terminal
 endif
 
-"Ignore for folders zend
+" Configuración espacios y tabs por tipo de archivo
+"autocmd FileType jade set tabstop=4|set shiftwidth=4|set expandtab
+""autocmd FileType stylus set tabstop=4|set noexpandtab
+
+
+"for results of grep
+set switchbuf+=usetab,newtab
+
+"for ctrpl 
+"enable per-project .vimrc files
+set exrc
+"Only execute safe per-project vimrc commands
+set secure
+"And ignore some files with extensions
+set wildignore+=tags
 set wildignore+=*/tmp/*
 set wildignore+=*/vendor/*
+set wildignore+=*/spec/vcr/*
+set wildignore+=*/chef/*
+set wildignore+=*/coverage/*
+set wildignore+=*.png,*.jpg,*.otf,*.woff,*.jpeg,*.orig
+set wildignore+=*/nodes_modules/*
 
 "Move lines up/bottom
+
 nnoremap <C-S-j> :m+<CR>==
 nnoremap <C-S-k> :m-2<CR>==
 inoremap <C-S-j> <Esc>:m+<CR>==gi
@@ -505,3 +520,6 @@ autocmd FileType coffee set tabstop=4|set noexpandtab
 set runtimepath^=~/.vim/bundle/vim-ctrlp.vim
 colorscheme molokai
 set nowrap
+
+" Daniel Misseler tips
+inoremap jk <ESC>
