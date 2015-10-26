@@ -2,7 +2,7 @@
 # ~/.bash_aliases
 
 #aliases for git
-
+alias gc='git commit -m'
 alias  gam='echo " > git commit -am" && git commit -am '
 alias  grm='git rm'
 alias  gmv='git mv'
@@ -19,7 +19,6 @@ alias   gm='git commit -m'
 alias   gb='echo " > git branch" && git branch'
 alias   gbr='echo " > git branch -r" && git branch -r'
 alias   gcb='echo "git checkout -b" && git checkout -b'
-alias   gc='git checkout'
 alias   gac='echo " > git add .; git commit -am " && git add .; git commit -am '
 alias   gpo='echo " > " && git pull origin '
 alias   gpuo='echo " > git push origin " && git push origin '
@@ -60,7 +59,7 @@ alias 	brillo='echo 6 | sudo tee  /sys/class/backlight/acpi_video0/brightness'
 
 alias	off='sudo halt'
 alias	reset='sudo reboot'
-
+alias   open='pantheon-files'
 alias   menu='tint2restart && clear'
 
 function glas() {
@@ -149,12 +148,13 @@ fi
 
 # `cat` with beautiful colors. requires Pygments installed.
 # 							   sudo easy_install Pygments
-alias cati='pygmentize -O style=monokai -f console256 -g'
+alias c='pygmentize -O style=monokai -f console256 -g'
 
 # GIT STUFF
 
 # Undo a `git push`
 alias undopush="git push -f origin HEAD^:master"
+
 
 # git root
 alias gr='[ ! -z `git rev-parse --show-cdup` ] && cd `git rev-parse --show-cdup || pwd`'
@@ -198,7 +198,6 @@ alias cleanup="find . -name '*.DS_Store' -type f -ls -delete"
 # Shortcuts
 alias g="git"
 alias v="vim"
-alias vif="vim + "
 
 # File size
 alias fs="stat -f \"%z bytes\""
@@ -208,6 +207,7 @@ alias rot13='tr a-zA-Z n-za-mN-ZA-M'
 
 # Empty the Trash on all mounted volumes and the main HDD
 alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; rm -rfv ~/.Trash"
+
 
 # Run DropboxUploader if you have it installed
 alias dropbox="~/code/Dropbox-Uploader/dropbox_uploader.sh $1"
@@ -273,15 +273,14 @@ alias cls='clear'
 alias sag='sudo apt-get '
 alias sagi='sudo apt-get install '
 
-# alias for websites
-
-alias gh='google-chrome https://github.com/jansanchez'
-alias gmail='google-chrome https://gmail.com'
-
 # aliases for edit
 
 
+alias cati='pygmentize -O style=monokai -f console256 -g'
+
+alias gh='chromium-browser https://github.com/emanrique'
+
+alias vimi='vim + '
 
 export TERM=xterm-256color
-
 
