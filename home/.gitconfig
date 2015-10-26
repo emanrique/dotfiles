@@ -1,6 +1,6 @@
 [user]
-	name = Jan Sanchez
-	email = joejansanchez@gmail.com
+	name = Elizabeth Manrique
+	email = ecmanrique@gmail.com
 [credential]
 	helper = cache --timeout=9800
 [color "branch"]
@@ -39,7 +39,7 @@
 [merge]
 	tool = meld
 [sendemail]
-	smtpserver = /joejansanchez@gmail.com/bin/mutt
+	smtpserver = /ecmanrique@gmail.com/bin/mutt
 [core]
 	editor = vim
 	attributesfile = ~/.gitattributes
