@@ -73,6 +73,7 @@ export PATH=/usr/local/share/npm/bin:$PATH
 source $ZSH/oh-my-zsh.sh
 
 source ~/.bash_aliases
+source ~/.bash_functions
 
 # final del archivo
 
@@ -86,13 +87,4 @@ fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# enhancd
-if [ -f "~/.enhancd/zsh/enhancd.zsh" ]; then
-    source "~/.enhancd/zsh/enhancd.zsh"
-fi
 
-
-# enhancd
-if [ -f "/home/jan/.enhancd/zsh/enhancd.zsh" ]; then
-    source "/home/jan/.enhancd/zsh/enhancd.zsh"
-fi
