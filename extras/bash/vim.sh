@@ -20,14 +20,14 @@ curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim;
 # Install plugins
 cd ~/.vim/bundle
 
+# Install vim-airline
+if [ ! -d "vim-airline" ]; then
+    git clone git@github.com:bling/vim-airline.git vim-airline
+fi
+
 # Install vim-commentary
 if [ ! -d "vim-commentary" ]; then
     git clone git://github.com/tpope/vim-commentary.git vim-commentary
-fi
-
-# Install vim-numbers
-if [ ! -d "vim-numbers" ]; then
-    git clone https://github.com/myusuf3/numbers.vim.git vim-numbers
 fi
 
 # Install vim-easymotion
@@ -78,11 +78,6 @@ if [ ! -d "vim-stylus" ]; then
     git clone https://github.com/wavded/vim-stylus.git vim-stylus
 fi
 
-# Install vim-sneak
-if [ ! -d "vim-sneak" ]; then
-    git clone https://github.com/justinmk/vim-sneak.git vim-sneak
-fi
-
 # Install vim-editorconfig
 if [ ! -d "vim-editorconfig" ]; then
     git clone https://github.com/editorconfig/editorconfig-vim.git vim-editorconfig
@@ -93,11 +88,6 @@ if [ ! -d "vim-gitgutter" ]; then
     git clone https://github.com/airblade/vim-gitgutter.git vim-gitgutter
 fi
 
-# Install vim-airline
-if [ ! -d "vim-airline" ]; then
-    git clone https://github.com/bling/vim-airline vim-airline
-fi
-
 # Install vim-ctrlp
 if [ ! -d "vim-ctrlp" ]; then
     git clone https://github.com/ctrlpvim/ctrlp.vim.git vim-ctrlp
@@ -106,6 +96,11 @@ fi
 # Install vim-ctrlp-py-matcher
 if [ ! -d "vim-ctrlp-py-matcher" ]; then
     git clone https://github.com/FelikZ/ctrlp-py-matcher.git vim-ctrlp-py-matcher
+fi
+
+# Install vim-nerdtree
+if [ ! -d "vim-nerdtree" ]; then
+    git clone git@github.com:scrooloose/nerdtree.git vim-nerdtree
 fi
 
 
