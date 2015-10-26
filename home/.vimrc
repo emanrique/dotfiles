@@ -513,9 +513,9 @@ vnoremap <C-S-k> :m-2<CR>gv=gv
 let g:indent_guides_enable_on_vim_startup = 0
 
 " Configuración espacios y tabs por tipo de archivo
-autocmd FileType jade set tabstop=4|set shiftwidth=4|set expandtab
-autocmd FileType stylus set tabstop=4|set noexpandtab
-autocmd FileType coffee set tabstop=4|set noexpandtab
+" autocmd FileType jade set tabstop=4|set shiftwidth=4|set expandtab
+" autocmd FileType stylus set tabstop=4|set noexpandtab
+" autocmd FileType coffee set tabstop=4|set noexpandtab
 
 set runtimepath^=~/.vim/bundle/vim-ctrlp.vim
 colorscheme molokai
@@ -523,3 +523,9 @@ set nowrap
 
 " Daniel Misseler tips
 inoremap jk <ESC>
+let g:EditorConfig_exec_path = '/usr/bin/editorconfig'
+
+nnoremap <C-w-t> :tab sp
+inoremap <C-w-t> <Esc>:tab sp
+
+
