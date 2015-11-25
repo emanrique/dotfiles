@@ -517,7 +517,6 @@ let g:indent_guides_enable_on_vim_startup = 0
 " autocmd FileType stylus set tabstop=4|set noexpandtab
 " autocmd FileType coffee set tabstop=4|set noexpandtab
 
-set runtimepath^=~/.vim/bundle/vim-ctrlp.vim
 colorscheme molokai
 set nowrap
 
@@ -528,4 +527,4 @@ let g:EditorConfig_exec_path = '/usr/bin/editorconfig'
 nnoremap <C-w-t> :tab sp
 inoremap <C-w-t> <Esc>:tab sp
 
-
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
