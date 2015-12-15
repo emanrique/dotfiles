@@ -103,6 +103,11 @@ if [ ! -d "vim-nerdtree" ]; then
     git clone git@github.com:scrooloose/nerdtree.git vim-nerdtree
 fi
 
+# Install vim-maximize
+if [ ! -d "vim-maximizer" ]; then
+    git clone git@github.com:szw/vim-maximizer.git
+fi
+
 
 
 echo "[Vim y sus plugins Instalados]"

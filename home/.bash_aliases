@@ -278,6 +278,8 @@ alias sagi='sudo apt-get install '
 
 alias cati='pygmentize -O style=monokai -f console256 -g'
 
+alias neo3='cd /home/elizabeth/htdocs/neo/public/neoauto3/frontend/neoauto3'
+
 alias gh='chromium-browser https://github.com/emanrique'
 
 alias vimi='vim + '

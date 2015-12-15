@@ -495,12 +495,44 @@ set secure
 set wildignore+=tags
 set wildignore+=*/tmp/*
 set wildignore+=*/vendor/*
+set wildignore+=*/newneo/*
+set wildignore+=*/abautos/*
+set wildignore+=*/public/neoauto3/public/*
 set wildignore+=*/spec/vcr/*
 set wildignore+=*/chef/*
 set wildignore+=*/coverage/*
-set wildignore+=*.png,*.jpg,*.otf,*.woff,*.jpeg,*.orig
-set wildignore+=*/nodes_modules/*
-
+set wildignore+=*.png,*.jpg,*.otf,*.woff,*.jpeg,*.orig,*.ttf,*.woff2,*.svg
+set wildignore+=*/public/neoauto3/frontend/neoauto3/nodes_modules/*
+set wildignore+=*/frontend_concesionario/*
+set wildignore+=*/frontend_home/*
+set wildignore+=*/frontend_tuAutoEstaAqui/*
+set wildignore+=*/public/static/*
+set wildignore+=*/despliegue/*
+set wildignore+=*/build/*
+set wildignore+=*/library/*
+set wildignore+=*/Resources/*
+set wildignore+=*/sql/*
+set wildignore+=*/newneo/*
+set wildignore+=*/tests/*
+set wildignore+=*/var/*
+set wildignore+=*/*.*htm*
+set wildignore+=*/*.css
+set wildignore+=*/*.lock
+set wildignore+=*/*.phar
+set wildignore+=*/*.md
+set wildignore+=*/*.json
+set wildignore+=*/*.doc*
+set wildignore+=*/*.xls
+set wildignore+=*/*.swp
+set wildignore+=*/*.yml
+set wildignore+=*/*.sql
+set wildignore+=*/*.sh
+set wildignore+=*/*.zip
+set wildignore+=*/*.txt
+set wildignore+=*/*.xml
+set wildignore+=*/*.csv
+set wildignore+=*/*.dmp
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist|tests|sql|vendor|tmp|var|library|Resources|despliegue|build)|(\.(sql|png|jpg|woff|woff2|svg|otf|jpeg|swp|ico|git|svn|csv|dmp|zip|txt|json|md|json|xml|phtml))$'
 "Move lines up/bottom
 
 nnoremap <C-S-j> :m+<CR>==
@@ -527,4 +559,8 @@ let g:EditorConfig_exec_path = '/usr/bin/editorconfig'
 nnoremap <C-w-t> :tab sp
 inoremap <C-w-t> <Esc>:tab sp
 
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+" let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+" let g:ctrlp_max_files = 0
+
+set runtimepath^=~/.vim/bundle/vim-ctrlp.vim
+let g:maximizer_default_mapping_key = '<F4>'
