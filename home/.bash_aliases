@@ -2,65 +2,21 @@
 # ~/.bash_aliases
 
 #aliases for git
+alias grm ='git rm $(git ls-files -d)'
 alias gc='git commit -m'
-alias  gam='echo " > git commit -am" && git commit -am '
-alias  grm='git rm'
-alias  gmv='git mv'
-alias  grr='git reset --hard HEAD'
-alias goop='git commit --amend -C HEAD -n'
-alias   ga='git add'
-alias   gp='git pull'
-alias  gpu='echo " > git push " && git push'
-alias   gl='git log --name-status'
 alias   gs='echo " > git status" && git status'
 alias   gf='echo " > git fetch -p" &&  git fetch -p'
 alias   gfo='echo " > git fetch origin" && git fetch origin '
 alias   gm='git commit -m'
 alias   gb='echo " > git branch" && git branch'
-alias   gbr='echo " > git branch -r" && git branch -r'
-alias   gcb='echo "git checkout -b" && git checkout -b'
-alias   gac='echo " > git add .; git commit -am " && git add .; git commit -am '
-alias   gpo='echo " > " && git pull origin '
-alias   gpuo='echo " > git push origin " && git push origin '
-alias   gpom='echo " > git pull origin master" && git pull origin master'
-alias   gpuom='echo " > git push origin master" && git push origin master'
-alias   gpod='git pull origin development'
-alias   gpuod='git push origin development'
-alias   gpor='git pull origin releases'
-alias   gpuor='git push origin releases'
-alias   gcm='git checkout master'
-alias   gcr='git checkout releases'
-alias   gcd='git checkout development'
-alias   gch='git checkout hotfix'
-alias   gcp='git checkout pre'
-alias   gmh='git merge hotfix'
-alias   gmd='git merge development'
-alias   gmr='git merge releases'
-alias   gmm='git merge master'
-alias   gff='git fetch -p && git rebase origin/\$(just_git_branch)'
-alias   gls='git log --pretty=format:"%C(reset)%h %C(yellow)%ad%C(yellow)%d %C(reset)%s%C(green) [%cn]" --decorate --date=short'
 alias   gclone='echo " > git clone " && git clone '
-alias   gcount='echo " > git shortlog -s -n --all" && git shortlog -s -n --all'
-alias   gla='echo " > git log --author" && git log --author '
-
-alias   killer="tmux ls | awk '{print $1}' | sed 's/://g' | xargs -I{} tmux kill-session -t {}"
 
 alias   gusers="git log --format='%aN' | sort -u"
 
 alias	chat='echo " > sudo nc -vlp 23" && sudo nc -vlp 23'
 
-alias   starcraft='wine ~/games/SC1.16/StarCraft.exe'
-
-alias   star='wine ~/shared/instaladores/games/SC1.16/StarCraft.exe'
-
-alias 	brillo='echo 6 | sudo tee  /sys/class/backlight/acpi_video0/brightness'
-
 # alises for off/reset of linux system
-
-alias	off='sudo halt'
-alias	reset='sudo reboot'
 alias   open='pantheon-files'
-alias   menu='tint2restart && clear'
 
 function glas() {
 echo " > git log --name-only --pretty=format: --author=$1 --since=$2 | sort | uniq"
@@ -96,10 +52,8 @@ alias -- -="cd -"
 alias j='cd .. && '
 
 # programs
-alias st='sublime &'
 alias firefox="firefox &"
 alias chrome="google-chrome &"
-alias f='thunar ./ &'
 
 # network
 
@@ -227,46 +181,6 @@ alias androide="bash /opt/android-studio/bin/studio.sh &"
 #alias chaplin='cd frontend/chaplin/ && make && cd ../..'
 
 alias home='cd ~/'
-
-#alias chaplin='coffee --watch --bare --output src/public/static/js/um/ frontend/chaplin/coffee/'
-
-#alias css='cd ~/htdocs/urbania3/frontend/css && node init.njs && cd ~/htdocs/urbania3/'
-
-alias css='cd ~/htdocs/aptitus2/frontend && watch -n 1 node init.njs'
-
-alias cafe='coffee --watch --bare --output src/public/static/js/ frontend/cafe/'
-
-#alias urbania='cd ~/htdocs/urbania3/'
-
-alias doc='cd ~/htdocs/urbania3/src/public/static/js && yuidoc . && urbania'
-
-alias jadeflux='jade --pretty --watch '
-
-alias tmuxu='~/dotfiles/tmxs/urbania3'
-
-alias tmuxn='~/dotfiles/tmxs/neoauto2'
-
-alias tmuxd='~/dotfiles/tmxs/development'
-
-alias tmuxa='~/dotfiles/tmxs/aptitus2'
-
-alias tmuxjp='~/dotfiles/tmxs/jqueryplugins'
-
-alias tmuxo='~/dotfiles/tmxs/ofertop'
-
-#Urbania BackEnd Team#
-
-alias urbania3='cd ~/proyectos/urbania/urbania3/'
-alias urbania='cd ~/proyectos/urbania/'
-alias pruebas='cd ~/proyectos/pruebas/'
-
-#Utils#
-alias szsh='source ~/.zshrc'
-alias pbcopy='xclip -selection clipboard'
-alias pbpaste='xclip -selection clipboard -o'
-alias ebal='sudo vim ~/.bash_aliases'
-alias cls='clear'
-
 
 # aliases for apt-get
 
