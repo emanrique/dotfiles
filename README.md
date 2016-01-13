@@ -3,16 +3,6 @@ dotfiles
 
 my dotfiles
 
-### Si solo deseas dotfiles
-
-```js
-bash bootstrap.sh
-```
-
--------------------------------------------------------
-
-### Si usas Elementary OS
-
 ```
 sudo apt-get update && sudo apt-get upgrade
 ```
