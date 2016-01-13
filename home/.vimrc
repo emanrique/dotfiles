@@ -564,3 +564,5 @@ inoremap <C-w-t> <Esc>:tab sp
 
 set runtimepath^=~/.vim/bundle/vim-ctrlp.vim
 let g:maximizer_default_mapping_key = '<F4>'
+let &colorcolumn=join(range(81,999),",")
+let &colorcolumn="80,".join(range(400,999),",")
