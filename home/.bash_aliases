@@ -2,9 +2,8 @@
 # ~/.bash_aliases
 
 #aliases for git
-alias grm ='git rm $(git ls-files -d)'
 alias gc='git commit -m'
-alias   gs='echo " > git status" && git status'
+alias   gs='git status'
 alias   gf='echo " > git fetch -p" &&  git fetch -p'
 alias   gfo='echo " > git fetch origin" && git fetch origin '
 alias   gm='git commit -m'
