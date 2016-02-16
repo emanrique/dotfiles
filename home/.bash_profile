@@ -7,3 +7,9 @@ export TERM=xterm-256color
 
 export LC_CTYPE=es_PE.UTF-8
 export LC_ALL=es_PE.UTF-8
+
+
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Devel
+source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
+ 
