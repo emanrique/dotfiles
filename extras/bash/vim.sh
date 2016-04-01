@@ -1,7 +1,7 @@
 #!/bin/bash
 #Script to install vim 7.4.803 from the vim mirror hosted in github
 
-version="v7-4-803"
+version="v7.4.803"
 foldername="vim-7-4-803"
 url="https://github.com/vim/vim/archive/$version.tar.gz"
 
