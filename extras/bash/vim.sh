@@ -1,113 +1,94 @@
-#!/usr/bin/env bash
+#!/bin/bash
+#Script to install vim 7.4.803 from the vim mirror hosted in github
 
-OPT_FOLDER="/opt"
-BUNDLE_FOLDER="~/.vim/bundle/"
+version="v7-4-803"
+foldername="vim-7-4-803"
+url="https://github.com/vim/vim/archive/$version.tar.gz"
 
-#sudo apt-get update
-#sudo apt-get install vim
-
-#vim --version
-
-echo "[Vim Instalado]"
-
-# install pathogen
-mkdir -p ~/.vim/autoload ~/.vim/bundle
-cd ~/.vim/autoload;
-
-curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim;
+filename_lua="lua-5.1"
+url_lua_repo="http://www.lua.org/ftp/$filename_lua.tar.gz"
+uninstall_flag=$1
 
 
-# Install plugins
-cd ~/.vim/bundle
+function main {
+    if [[ $uninstall_flag == "--uninstall" ]]; then
+        uninstall_vim
+    else
+        install_vim
+        install_success
+    fi
+}
 
-# Install vim-airline
-if [ ! -d "vim-airline" ]; then
-    git clone git@github.com:bling/vim-airline.git vim-airline
-fi
+function install_vim {
+    echo "-->Go $HOME"
+    cd $HOME
 
-# Install vim-commentary
-if [ ! -d "vim-commentary" ]; then
-    git clone git://github.com/tpope/vim-commentary.git vim-commentary
-fi
+    echo "-->Creating the vim folder..."
+    mkdir vim
 
-# Install vim-easymotion
-if [ ! -d "vim-easymotion" ]; then
-    git clone git://github.com/Lokaltog/vim-easymotion.git vim-easymotion
-fi
+    echo "-->Go to the created vim folder..."
+    cd $HOME/vim
 
+    echo "-->Invoque and untar from the mirror hosted in github"
+    curl -L $url | tar zx
 
-# Install vim-delimit-mate
-if [ ! -d "vim-delimit-mate" ]; then
-    git clone https://github.com/Raimondi/delimitMate.git vim-delimit-mate
-fi
+    echo "-->Go to to $foldername folder"
+    cd "$foldername"
 
-# Install vim-surround
-if [ ! -d "vim-surround" ]; then
-    git clone https://github.com/tpope/vim-surround.git vim-surround
-fi
+    echo "-->Cleaning existing build"
+    make distclean
 
-# Install vim-multiple-cursors
-if [ ! -d "vim-multiple-cursors" ]; then
-    git clone https://github.com/terryma/vim-multiple-cursors.git vim-multiple-cursors
-fi
+    echo "-->Executing And build with the default settings"
+    ./configure --with-features=huge \
+            --enable-multibyte \
+            --enable-rubyinterp \
+            --enable-pythoninterp \
+            --with-python-config-dir=/usr/lib/python2.7/config \
+            --enable-perlinterp \
+            --enable-fail-if-missing \
+            --enable-cscope
+    
+    echo "-->creating the backup of /usr/bin/vim"
+    sudo mv /usr/bin/vim /usr/bin/vim-old
+    
+    echo "-->Execute the installer with superuser mode, "
+    echo "-->basically the binary copy to the path /usr/local/bin"
+    sudo make install
+    
+    
+    echo "-->creating the /usr/local/bin link"
+    sudo ln -s /usr/local/bin/vim /usr/bin/vim
+    
+    echo "-->Exporting the current path"
+    export PATH=/usr/local/bin:$PATH
+    
+    echo "-->Go to $HOME path"
+    cd $HOME
+    echo "-->done!"
+}
 
+function uninstall_vim {
+    read -p "Are you sure to uninstall vim? (y/n)" -n 1 -r
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        echo "-->Go to source folder"
+        cd "$HOME/vim/vim-$version"
+        echo "-->uninstalling..."
+        sudo make uninstall
+        
+        echo "-->Welcome back old vim"
+        sudo mv /usr/bin/vim-old /usr/bin/vim
+        
+        cd $HOME
+        sudo rm -fr "$HOME/vim/$foldername"
+        echo "-->done."
+    else
+        exit 1
+    fi
+}
 
+function install_success {
+    echo "-->vim has been successfully installed :D"
+    vim --version
+}
 
-# Install vim-coffee-script
-if [ ! -d "vim-coffee-script" ]; then
-    git clone https://github.com/kchmck/vim-coffee-script.git vim-coffee-script
-fi
-
-# Install vim-jade
-if [ ! -d "vim-jade" ]; then
-    git clone https://github.com/digitaltoad/vim-jade.git vim-jade
-fi
-
-# Install vim-javascript
-if [ ! -d "vim-javascript" ]; then
-    git clone https://github.com/pangloss/vim-javascript vim-javascript
-fi
-
-# Install vim-css
-if [ ! -d "vim-css" ]; then
-    git clone https://github.com/hail2u/vim-css3-syntax.git vim-css
-fi
-
-# Install vim-stylus
-if [ ! -d "vim-stylus" ]; then
-    git clone https://github.com/wavded/vim-stylus.git vim-stylus
-fi
-
-# Install vim-editorconfig
-if [ ! -d "vim-editorconfig" ]; then
-    git clone https://github.com/editorconfig/editorconfig-vim.git vim-editorconfig
-fi
-
-# Install vim-gitgutter
-if [ ! -d "vim-gitgutter" ]; then
-    git clone https://github.com/airblade/vim-gitgutter.git vim-gitgutter
-fi
-
-# Install vim-ctrlp
-if [ ! -d "vim-ctrlp" ]; then
-    git clone https://github.com/ctrlpvim/ctrlp.vim.git vim-ctrlp
-fi
-
-# Install vim-ctrlp-py-matcher
-if [ ! -d "vim-ctrlp-py-matcher" ]; then
-    git clone https://github.com/FelikZ/ctrlp-py-matcher.git vim-ctrlp-py-matcher
-fi
-
-# Install vim-nerdtree
-if [ ! -d "vim-nerdtree" ]; then
-    git clone git@github.com:scrooloose/nerdtree.git vim-nerdtree
-fi
-
-# Install vim-maximize
-if [ ! -d "vim-maximizer" ]; then
-    git clone git@github.com:szw/vim-maximizer.git
-fi
-
-
-
-echo "[Vim y sus plugins Instalados]"
+main
