@@ -73,6 +73,7 @@ export PATH=/usr/local/share/npm/bin:$PATH
 source $ZSH/oh-my-zsh.sh
 
 source ~/.bash_aliases
+source ~/.bash_profile
 source ~/.bash_functions
 
 # final del archivo
